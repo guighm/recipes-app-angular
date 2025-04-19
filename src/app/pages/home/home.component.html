@@ -1,0 +1,42 @@
+<div class="home">
+    <h1>🍴 Aplicativo de Receitas 🍴</h1>
+    <h2>Lista de Receitas</h2>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Nome da receita</th>
+                    <th>Descrição</th>
+                    <th>Tempo de Preparação</th>
+                    <th>Número de porções</th>
+                    <th>Dificuldade</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (receita of receitas; track receita.id) {
+                    <tr>
+                        <td class="receita__titulo">{{ receita.title }}</td>
+                        <td>{{ receita.description }}</td>
+                        <td>{{ receita.preparationTime }}</td>
+                        <td>{{ receita.servings }}</td>
+                        <td class="receita__dificuldade">{{ receita.difficulty }}</td>
+                        <td><img class="receita__imagem"
+                            [src]="receita.imageUrl" 
+                            [alt]="`Imagem de ${receita.title}`">
+                        </td>
+                        <td>
+                            <div class="icones">
+                                <app-tooltip label="🔍" [link]="`/recipe/${receita.id}`" message="Ver receita"></app-tooltip>
+                                <app-action label="🗑️" [action]="deleteRecipe(receita.id)" message="Deletar receita"></app-action>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a routerLink="/recipe/new" class="botao__criar__receita">Criar receita</a>
+        @if(isAuthenticated) {
+            <button (click)="deslogar()" class="botao__criar__receita">Logout</button>
+        }
+</div>

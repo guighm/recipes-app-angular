@@ -1,0 +1,14 @@
+<header>
+    <nav class="navegacao">
+        <div class="navegacao__opcao">
+            <a routerLink="/" class="navegacao__link">Home</a>
+            <div class="navegacao__listra"></div>
+        </div>
+        @if(!isAuthenticated) {
+            <div class="navegacao__opcao">
+                <a routerLink="/login" class="navegacao__link">Fazer Login</a>
+                <div class="navegacao__listra"></div>
+            </div>
+        }
+    </nav>
+</header>

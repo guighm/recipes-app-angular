@@ -1,0 +1,38 @@
+<section class="secao">
+    <h2>Cadastre uma nova receita</h2>
+    <img [src]="imageUrl">
+    <form (ngSubmit)="createRecipe()" class="formulario" [formGroup]="form">
+        <div class="campo">
+            <label for="title">Título: <app-asterisco></app-asterisco></label>
+            <input type="text" id="title" formControlName="title" placeholder="Título"/>
+            <app-error-message [control]="getControl('title')"></app-error-message>
+        </div>
+        <div class="campo">
+            <label for="description">Descrição: <app-asterisco></app-asterisco></label>
+            <input type="text" id="description" formControlName="description" placeholder="Descrição"/>
+            <app-error-message [control]="getControl('description')"></app-error-message>
+        </div>
+        <div class="campo">
+            <label for="preparationTime">Tempo de Preparação: <app-asterisco></app-asterisco> </label>
+            <input type="number" id="preparationTime" formControlName="preparationTime" placeholder="Tempo de Preparação"/>
+            <app-error-message [control]="getControl('preparationTime')"></app-error-message>
+        </div>
+        <div class="campo">
+            <label for="servings">Número de porções: <app-asterisco></app-asterisco> </label>
+            <input type="number" id="servings" formControlName="servings" placeholder="Número de Porções"/>
+            <app-error-message [control]="getControl('servings')"></app-error-message>
+        </div>
+        <div class="campo">
+            <label for="difficulty">Dificuldade: <app-asterisco></app-asterisco> </label>
+            <input type="text" id="difficulty" formControlName="difficulty" placeholder="Dificuldade"/>
+            <app-error-message [control]="getControl('difficulty')"></app-error-message>
+        </div>
+        <div class="campo">
+            <label for="imageUrl">Imagem: <app-asterisco></app-asterisco> </label>
+            <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="Imagem" [(ngModel)]="imageUrl"/>
+            <app-error-message [control]="getControl('imageUrl')"></app-error-message>
+        </div>
+        <button type="submit" [disabled]="form.invalid">Enviar</button>
+    </form>
+    <p class="observacao">Os campos obrigatórios estão marcados (<app-asterisco></app-asterisco>)</p>
+</section>

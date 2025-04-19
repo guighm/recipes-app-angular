@@ -1,0 +1,78 @@
+<div class="recipe__page">
+    <div class="receita">
+        <img class="receita__imagem"
+            [src]="receita.imageUrl" 
+            [alt]="`Imagem de ${receita.title}`">
+        <h2 class="receita__titulo">{{ receita.title }}</h2>
+        <p><strong>Descrição: </strong>{{ receita.description }}</p>
+        <p><strong>Tempo de Preparação: </strong>{{ receita.preparationTime }}</p>
+        <p><strong>Número de Porções: </strong>{{ receita.servings }}</p>
+        <p><strong>Dificuldade: </strong>{{ receita.difficulty }}</p>
+    </div>
+    <div class="lista">
+        <h2>Lista de Ingredientes</h2>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (ingrediente of ingredientes; track ingrediente.id) {
+                    <tr>
+                        <td>{{ ingrediente.name }}</td>
+                        <td>{{ ingrediente.quantity }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button (click)="showIngredientForm()">Novo Ingrediente</button>
+        @if(isForm1Visible) {
+            <form (submit)="registerIngredient()" [formGroup]="ingredientForm" class="formulario">
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Nome" formControlName="name">
+                </div>
+                <div class="campo">
+                    <label for="quantity">Quantidade</label>
+                    <input type="text" id="quantity" placeholder="Quantidade" formControlName="quantity">
+                </div>
+                <button type="submit" [disabled]="ingredientForm.invalid">Cadastrar</button>
+            </form>
+        }
+    </div>
+    <div class="lista">
+        <h2>Lista de Passos</h2>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (passo of passos; track passo.id) {
+                    <tr>
+                        <td>{{ passo.stepNumber }}</td>
+                        <td>{{ passo.description }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button (click)="showStepForm()">Novo Passo</button>
+        @if(isForm2Visible) {
+            <form (submit)="registerStep()" [formGroup]="stepForm" class="formulario">
+                <div class="campo">
+                    <label for="number">Número</label>
+                    <input type="text" id="number" formControlName="number" placeholder="Número">
+                </div>
+                <div class="campo">
+                    <label for="description">Descrição</label>
+                    <input type="text" id="description" formControlName="description" placeholder="Descrição">
+                </div>
+                <button type="submit" [disabled]="stepForm.invalid">Cadastrar</button>
+            </form>
+        }
+    </div>
+</div>

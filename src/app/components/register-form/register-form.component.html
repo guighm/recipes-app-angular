@@ -1,0 +1,23 @@
+<section class="secao">
+    <h2>Cadastre-se</h2>
+    <p class="observacao">Os campos obrigatórios estão marcados (<app-asterisco></app-asterisco>)</p>
+    <form (ngSubmit)="ola()" class="formulario" [formGroup]="registerForm">
+        <div class="campo">
+            <label for="name">Nome: <app-asterisco></app-asterisco></label>
+            <input type="text" id="name" formControlName="name" placeholder="Nome"/>
+            <app-error-message [control]="getControl('name')"></app-error-message>
+        </div>
+        <div class="campo">
+            <label for="email">E-mail: <app-asterisco></app-asterisco></label>
+            <input type="text" id="email" formControlName="email" placeholder="E-mail"/>
+            <app-error-message [control]="getControl('email')"></app-error-message>
+        </div>
+        <div class="campo">
+            <label for="password">Senha: <app-asterisco></app-asterisco> </label>
+            <input type="text" id="password" formControlName="password" placeholder="Senha"/>
+            <app-error-message [control]="getControl('password')"></app-error-message>
+        </div>
+        <button type="submit" [disabled]="registerForm.invalid">Enviar</button>
+        <p class="aviso">Já possui cadastro? <a routerLink="/login" class="aviso__link">Fazer Login</a></p>
+    </form>
+</section>
