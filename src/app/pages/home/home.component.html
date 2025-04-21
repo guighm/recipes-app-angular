@@ -35,8 +35,10 @@
                 }
             </tbody>
         </table>
-        <a routerLink="/recipe/new" class="botao__criar__receita">Criar receita</a>
-        @if(isAuthenticated) {
-            <button (click)="deslogar()" class="botao__criar__receita">Logout</button>
-        }
+        <div class="botoes">
+            <a routerLink="/recipe/new" class="botao__criar__receita">Criar receita</a>
+            @if(isAuthenticated) {
+                <button (click)="deslogar()" class="botao__criar__receita">Logout</button>
+            }
+        </div>
 </div>

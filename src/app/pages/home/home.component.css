@@ -5,7 +5,7 @@
 
 .tabela th,
 .tabela td {
-  border: 1px solid #000;
+  border: 1px solid var(--color-border);
   padding: 8px;
 }
 
@@ -44,10 +44,10 @@
   background: none;
   border: none;
   font-weight: bold;
-  background-color: var(--cor-3);
+  background-color: var(--color-primary);
   padding: 1rem;
   border-radius: 1rem;
-  border: 1px solid var(--cor-2);
+  border: 1px solid var(--color-border);
 }
 
 .botao__criar__receita:hover
@@ -63,4 +63,10 @@
   flex-direction: column;
   gap: 30px;
   padding: 10px;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }

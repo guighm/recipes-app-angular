@@ -7,7 +7,7 @@
 
 .tooltip-text {
     visibility: hidden;
-    background-color: var(--cor-3);
+    background-color: var(--color-primary);
     color: black;
     border: 1px solid black;
     text-align: center;
